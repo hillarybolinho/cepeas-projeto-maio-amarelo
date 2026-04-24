@@ -51,10 +51,8 @@ app.post('/processar-quiz', (req, res) => {
     });
 });
 
-// Iniciar Servidor
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`\n🚀 PROJETO RODANDO COM SUCESSO!`);
-    console.log(`👉 Acesse: http://localhost:${PORT}`);
-    console.log(`💡 O C++ foi substituído pelo JavaScript com sucesso.\n`);
+// Iniciar Servidor (Ajustado para o Render)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n🚀 PROJETO RODANDO COM SUCESSO NA PORTA ${PORT}!`);
 });
