@@ -24,35 +24,32 @@ app.post('/registrar', (req, res) => {
     res.redirect('/quiz.html');
 });
 
-// 2. Processar Quiz (Substituindo o C++)
+// 2. Processar Quiz (Cópia fiel para você colar aí!)
 app.post('/processar-quiz', (req, res) => {
     const respostas = req.body;
     let notaFinal = 0;
 
-    // GABARITO (Lógica que era do C++)
-    if (respostas.p1 === 'c') notaFinal += 1; // Amarelo
-    if (respostas.p2 === 'b') notaFinal += 1; // Faixa de pedestres
-    if (respostas.p3 === 'b') notaFinal += 1; // 1,5 metro
-    if (respostas.p4 === 'c') notaFinal += 1; // Dê a preferência
-    if (respostas.p5 === 'b') notaFinal += 1; // 10 anos
-    if (respostas.p6 === 'b') notaFinal += 1; // Perda de aderência
+    // GABARITO
+    if (respostas.p1 === 'c') notaFinal += 1;
+    if (respostas.p2 === 'b') notaFinal += 1;
+    if (respostas.p3 === 'b') notaFinal += 1;
+    if (respostas.p4 === 'c') notaFinal += 1;
+    if (respostas.p5 === 'b') notaFinal += 1;
+    if (respostas.p6 === 'b') notaFinal += 1;
 
-    console.log(`📝 ${dadosUsuario.nome} tirou nota: ${notaFinal}`);
+    console.log(`📝 Usuário tirou nota: ${notaFinal}`);
 
-    // SALVAR NO BANCO DE DADOS
+    // Tentativa de salvar (Se falhar na nuvem, o código ignora e segue em frente)
     const query = `INSERT INTO resultados (nome, escola, turma, pontuacao) VALUES (?, ?, ?, ?)`;
-    db.run(query, [dadosUsuario.nome, dadosUsuario.escola, dadosUsuario.turma, notaFinal], function(err) {
-        if (err) {
-            console.error("❌ Erro ao salvar:", err.message);
-            return res.status(500).send("Erro ao salvar no banco.");
-        }
-        // Manda para a página de resultado com a nota na URL
-        res.redirect(`/resultado.html?nota=${notaFinal}`);
+    db.run(query, [
+        dadosUsuario.nome || 'Anônimo', 
+        dadosUsuario.escola || 'N/A', 
+        dadosUsuario.turma || 'N/A', 
+        notaFinal
+    ], (err) => {
+        if (err) console.error("❌ Erro de banco ignorado para não travar o site.");
     });
-});
 
-// Iniciar Servidor (Ajustado para o Render)
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`\n🚀 PROJETO RODANDO COM SUCESSO NA PORTA ${PORT}!`);
+    // O PULO DO GATO: O redirecionamento agora é IMEDIATO
+    res.redirect(`/resultado.html?nota=${notaFinal}`);
 });
