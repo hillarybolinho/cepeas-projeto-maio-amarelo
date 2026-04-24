@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="resultado.css">
+    <title>Resultado - Maio Amarelo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+    <div class="pista-final">
+        <div class="carro-animado carro1">🚗</div>
+        <div class="carro-animado carro2">🚕</div>
+        <div class="carro-animado carro3">🏎️</div>
+        <div class="confete" style="left:10%">✨</div>
+        <div class="confete" style="left:30%">🎈</div>
+        <div class="confete" style="left:50%">🌟</div>
+        <div class="confete" style="left:80%">🎊</div>
+    </div>
+
+    <div class="container-lista">
+        <h1>Fim do Desafio! 🏁</h1>
+       
+        <div id="placar">
+            <p>Calculando seu desempenho...</p>
+        </div>
+       
+        <br>
+        <a href="index.html" class="btn-enviar" style="text-decoration: none; display: inline-block;">Tentar de Novo 🔄</a>
+    </div>
+
+    <script>
+        // MÁGICA PARA PEGAR A NOTA DA URL
+        // Exemplo: se a URL for resultado.html?nota=5, ele pega o 5.
+        const parametros = new URLSearchParams(window.location.search);
+        const nota = parametros.get('nota');
+        const displayPlacar = document.getElementById('placar');
+
+        if (nota !== null) {
+            // Se a nota for alta, podemos até dar um parabéns especial!
+            let mensagem = "";
+            if (parseInt(nota) >= 4) {
+                mensagem = "Mandou muito bem! 🏆";
+            } else {
+                mensagem = "Bom esforço! Que tal revisar as regras? 📚";
+            }
+
+            // Atualiza o HTML com a nota vinda do servidor/C++
+            displayPlacar.innerHTML = `
+                <p style="font-size: 1.2rem; color: #333;">Sua pontuação foi:</p>
+                <h2 style="font-size: 4rem; margin: 10px 0; color: #d32f2f;">${nota} / 6</h2>
+                <p><strong>${mensagem}</strong></p>
+            `;
+        } else {
+            displayPlacar.innerHTML = "<p>Nenhuma nota encontrada. Faça o quiz primeiro! 😉</p>";
+        }
+    </script>
+</body>
+</html>

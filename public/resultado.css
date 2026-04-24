@@ -1,0 +1,110 @@
+/* Fundo com as cores do Maio Amarelo */
+body {
+    background-color: #ffcc00;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Evita barra de rolagem por causa dos carros */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-lista {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    z-index: 10; /* Fica na frente dos carros */
+    position: relative;
+    border: 5px solid #333;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+#placar {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+    margin: 20px 0;
+}
+
+/* Estilização do Botão */
+.btn-enviar {
+    background-color: #333;
+    color: #ffcc00 !important;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: #000;
+    transform: scale(1.1);
+}
+
+/* --- ANIMAÇÃO DOS CARROS NO FUNDO --- */
+
+.pista-final {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Deixa clicar no botão através da animação */
+}
+
+.carro-animado {
+    position: absolute;
+    font-size: 3rem;
+    bottom: 10%;
+    animation: dirigir linear infinite;
+}
+
+/* Carros diferentes em tempos diferentes */
+.carro1 { animation-duration: 5s; bottom: 15%; }
+.carro2 { animation-duration: 7s; bottom: 5%; animation-delay: 2s; }
+.carro3 { animation-duration: 4s; bottom: 25%; animation-delay: 1s; }
+
+@keyframes dirigir {
+    from { left: -10%; transform: scaleX(1); }
+    to { left: 110%; transform: scaleX(1); }
+}
+
+/* Balão de Confete/Emoji */
+.confete {
+    position: absolute;
+    top: -50px;
+    animation: cair 3s linear infinite;
+}
+
+@keyframes cair {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+body {
+    background-color: #ffcc00;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+    /* AS LINHAS MÁGICAS SÃO ESSAS: */
+    width: 100vw;
+    overflow: hidden;
+    position: fixed; /* Prende a tela para não "puxar" no celular */
+}
+.container-lista {
+    /* ... seus outros códigos ... */
+    width: 90%; /* Ocupa 90% da largura no celular */
+    max-width: 400px; /* Não passa de 400px no computador */
+    box-sizing: border-box; /* Garante que o padding não "estoure" a largura */
+}

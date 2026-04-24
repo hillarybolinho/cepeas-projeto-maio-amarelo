@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Maio Amarelo - Desafio</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+    <div class="container-lista">
+        <header>
+            <h1>Desafio Maio Amarelo</h1>
+            <p>Responda todas as questões abaixo e teste seus conhecimentos!</p>
+        </header>
+
+        <form action="/processar-quiz" method="POST" id="quiz-form">
+           
+            <div class="questao">
+                <p class="nivel facil">Fácil</p>
+                <label>1. Qual é a cor do semáforo que indica "Atenção"?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p1" value="a" required> Verde</label>
+                    <label><input type="radio" name="p1" value="b"> Vermelho</label>
+                    <label><input type="radio" name="p1" value="c"> Amarelo</label>
+                    <label><input type="radio" name="p1" value="d"> Azul</label>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p class="nivel facil">Fácil</p>
+                <label>2. Onde o pedestre deve sempre atravessar a rua?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p2" value="a" required> Em qualquer lugar</label>
+                    <label><input type="radio" name="p2" value="b"> Na faixa de pedestres</label>
+                    <label><input type="radio" name="p2" value="c"> Correndo entre os carros</label>
+                    <label><input type="radio" name="p2" value="d"> Perto das esquinas</label>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p class="nivel medio">Médio</p>
+                <label>3. Qual a distância mínima que um carro deve manter de uma bicicleta?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p3" value="a" required> 0,5 metro</label>
+                    <label><input type="radio" name="p3" value="b"> 1,5 metro</label>
+                    <label><input type="radio" name="p3" value="c"> 3 metros</label>
+                    <label><input type="radio" name="p3" value="d"> Não há distância mínima</label>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p class="nivel medio">Médio</p>
+                <label>4. O que significa a placa de um triângulo invertido?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p4" value="a" required> Pare</label>
+                    <label><input type="radio" name="p4" value="b"> Perigo</label>
+                    <label><input type="radio" name="p4" value="c"> Dê a preferência</label>
+                    <label><input type="radio" name="p4" value="d"> Proibido retornar</label>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p class="nivel dificil">Difícil</p>
+                <label>5. Qual a validade da CNH para motoristas com menos de 50 anos?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p5" value="a" required> 5 anos</label>
+                    <label><input type="radio" name="p5" value="b"> 10 anos</label>
+                    <label><input type="radio" name="p5" value="c"> 3 anos</label>
+                    <label><input type="radio" name="p5" value="d"> Vitalícia</label>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p class="nivel dificil">Difícil</p>
+                <label>6. O que é o "Efeito Aquaplanagem"?</label>
+                <div class="opcoes-lista">
+                    <label><input type="radio" name="p6" value="a" required> Lavar o carro com água</label>
+                    <label><input type="radio" name="p6" value="b"> Perda de aderência dos pneus por uma camada de água</label>
+                    <label><input type="radio" name="p6" value="c"> Economia de combustível na chuva</label>
+                    <label><input type="radio" name="p6" value="d"> Aceleração rápida no asfalto molhado</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-enviar">Finalizar e Ver Resultado 🏁</button>
+        </form>
+    </div>
+
+    <div class="pista">
+        <div class="carro">🚗</div>
+    </div>
+
+</body>
+</html>

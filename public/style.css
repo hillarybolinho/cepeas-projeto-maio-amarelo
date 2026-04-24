@@ -1,0 +1,121 @@
+/* Configurações básicas */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #FFD700; /* Amarelo Vibrante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Evita scroll por causa do carrinho */
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 450px;
+    z-index: 10;
+    border: 3px solid #333;
+}
+
+h1 { text-align: center; color: #333; margin-top: 0; }
+p { text-align: center; color: #555; font-size: 0.9rem; }
+
+.campo { margin-bottom: 15px; }
+label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.checkbox-formado {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.btn-iniciar {
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    color: #FFD700;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-iniciar:hover { transform: scale(1.02); }
+
+/* --- Animação do Carrinho e Pista --- */
+
+.pista {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #333; /* Cor do asfalto */
+    border-top: 5px dashed #fff; /* Faixa da rua */
+}
+
+.carro {
+    position: absolute;
+    font-size: 40px;
+    bottom: 15px;
+    left: -100px; /* Começa fora da tela */
+    animation: rodarCarro 6s linear infinite;
+}
+
+/* Faz o carrinho atravessar a tela eternamente */
+@keyframes rodarCarro {
+    0% { left: -100px; }
+    100% { left: 110%; }
+}
+
+/* Responsividade para celular */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    h1 { font-size: 1.5rem; }
+}
+
+/* Container do formulário para centralizar os itens */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre o input e o botão */
+}
+
+/* Estilização do Input de Nome */
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 3px solid #333; /* Borda grossa estilo placa */
+    border-radius: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #e6c200; /* Muda para um amarelo escuro ao clicar */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+

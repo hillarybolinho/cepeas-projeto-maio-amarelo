@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maio Amarelo - Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Maio Amarelo</h1>
+            <p>Pela segurança de todos no trânsito.</p>
+        </header>
+
+        <form action="/registrar" method="POST">
+            <div class="campo">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+            </div>
+
+            <div id="campos-estudante">
+                <div class="campo">
+                    <label for="escola">Escola:</label>
+                    <input type="text" id="escola" name="escola" placeholder="Nome da escola">
+                </div>
+                <div class="campo">
+                    <label for="turma">Turma / Ano:</label>
+                    <input type="text" id="turma" name="turma" placeholder="Ex: 2º Ano B">
+                </div>
+            </div>
+
+            <div class="checkbox-formado">
+                <input type="checkbox" id="jaFormado" name="jaFormado" onchange="toggleCampos()">
+                <label for="jaFormado">Já saí da escola / Me formei</label>
+            </div>
+
+          <button type="submit" class="btn-iniciar">Iniciar Quiz</button>
+
+        </form>
+    </div>
+
+    <div class="pista">
+        <div class="carro">🚗</div>
+    </div>
+
+    <script>
+        // Função que anula as perguntas escolares
+        function toggleCampos() {
+            const checkbox = document.getElementById('jaFormado');
+            const camposEstudante = document.getElementById('campos-estudante');
+           
+            if (checkbox.checked) {
+                camposEstudante.style.display = 'none';
+                // Limpa os campos para não enviar lixo pro banco
+                document.getElementById('escola').value = '';
+                document.getElementById('turma').value = '';
+            } else {
+                camposEstudante.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
